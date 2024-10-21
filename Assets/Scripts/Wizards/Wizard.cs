@@ -31,7 +31,7 @@ public class Wizard : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        if (CurrentGameState.getGameState() == GameState.PLAYING)
+        if (CurrentGameState.getGameState() == GameState.PLAYING || CurrentGameState.getGameState() == GameState.INTERMISSION)
         {
             attack();
         }

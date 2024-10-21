@@ -12,20 +12,13 @@ public class EnemySpawner : MonoBehaviour
     //Variable declarations
     float spawnRate = 3; //Number of seconds to enemy spawn
     float spawnTimer = 0;
-    List<String> enemies = new List<String>();
+    List<string> enemies = new List<string>();
     public List<GameObject> wayPointList;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        List<String> temp = new List<String>();
-        for(int i = 0; i < 5; i++)
-        {
-            temp.Add("Enemy1");
-            temp.Add("Enemy2");
-        }
-        setList(temp);
         gameObject.GetComponent<Renderer>().material.color = Color.blue;
     }
 
@@ -37,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         }
         return true;
     }
-    public void setList(List<String> e)
+    public void setList(List<string> e)
     {
         enemies = e;
     }

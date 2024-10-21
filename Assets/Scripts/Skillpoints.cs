@@ -27,13 +27,13 @@ public static class Skillpoints
         {
             CurrentGameState.setState(GameState.LOSS);
         }
-        else if (GameController.checkEmpty() && (GameObject.FindGameObjectsWithTag("Enemy").Count() == 0))//Temporary until skilltree
+        else if(GameController.outOfRounds())
         {
             CurrentGameState.setState(GameState.WIN);
         }
-        else if(GameController.checkEmpty())
+        else if (GameController.checkEmpty() && (GameObject.FindGameObjectsWithTag("Enemy").Count() == 0))//Temporary until skilltree
         {
-            Debug.Log(GameObject.FindGameObjectsWithTag("Enemy").Count());
+            CurrentGameState.setState(GameState.INTERMISSION);
         }
     }
 }

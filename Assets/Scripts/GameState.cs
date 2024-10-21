@@ -2,6 +2,7 @@ public enum GameState
 {
     PLAYING,
     PAUSED,
+    INTERMISSION,
     WIN,
     LOSS
 }
