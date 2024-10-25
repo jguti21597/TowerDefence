@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public List <Button> spawnButtons;
+    public List<bool> unlockedSkillList = new List<bool> { false, false } ;
     string selectedWizard = "";
     public TextMeshProUGUI points;
     public TextMeshProUGUI stateText;
@@ -32,8 +33,35 @@ public class GameController : MonoBehaviour
         roundNum = -1;
         roundTimer = 0;
         setTestWaves();
+
+        foreach(Button spawnbutton in spawnButtons){
+            spawnbutton.interactable = false;
+        }
+        
     }
 
+    void Skillstate(){
+        for(int i = 0;i < 1;i++){
+            spawnButtons[i].interactable = isUnlocked(i);
+        }
+        // else if (Skillpoints.getPoints() < 900){
+        //     spawnButtons[0].interactable = false;
+        // }
+    }
+
+    void lockingSkill(){
+        unlockedSkillList[0]=true;
+        // if (selectedWizard == "Wizard1Button"){
+        //     if (Skillpoints.getPoints()>500){
+        //         unlockedSkillList[0]=true;
+        //     }
+        // }
+        
+    }
+
+    public bool isUnlocked(int pos){
+        return unlockedSkillList[pos];
+    }
     void setTestWaves()
     {
         List<string> temp = new List<string>();
@@ -86,7 +114,9 @@ public class GameController : MonoBehaviour
     {
         points.text = "SkillPoints: " + Skillpoints.getPoints();
         checkState();
-
+        lockingSkill();
+        Skillstate();
+        
         if(CurrentGameState.getGameState() == GameState.INTERMISSION)
         {
             roundTimer += Time.deltaTime;
@@ -118,6 +148,7 @@ public class GameController : MonoBehaviour
         {
             stateText.text = "Game Over";
             stateText.color = Color.red;
+            Time.timeScale = 0;
         }
         else if(state == GameState.WIN)
         {
