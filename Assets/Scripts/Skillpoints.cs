@@ -23,7 +23,7 @@ public static class Skillpoints
 
     public static void updatePointState()
     {
-        if (skillPoints < 0)
+        if (skillPoints <= 0)
         {
             CurrentGameState.setState(GameState.LOSS);
         }
