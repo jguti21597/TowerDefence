@@ -1,4 +1,6 @@
 using UnityEngine;
+//using UnityEngine.UI;
+
 
 public class Fortress : MonoBehaviour
 {
@@ -13,7 +15,13 @@ public class Fortress : MonoBehaviour
 
     public void takeDamage(int damageVal)
     {
-        Skillpoints.addPoints(-damageVal);
-        Debug.Log("Damage: " +  damageVal);
+        if (Skillpoints.getPoints()==0){
+            return;
+        }
+        else {
+            Skillpoints.addPoints(-damageVal);
+            Debug.Log("Damage: " +  damageVal);
+        }
+        
     }
 }
