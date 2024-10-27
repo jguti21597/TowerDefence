@@ -37,25 +37,27 @@ public class GameController : MonoBehaviour
         foreach(Button spawnbutton in spawnButtons){
             spawnbutton.interactable = false;
         }
-        
     }
 
     void Skillstate(){
-        for(int i = 0;i < 1;i++){
+        for(int i = 0;i < 2;i++){
             spawnButtons[i].interactable = isUnlocked(i);
         }
-        // else if (Skillpoints.getPoints() < 900){
-        //     spawnButtons[0].interactable = false;
-        // }
     }
 
     void lockingSkill(){
-        unlockedSkillList[0]=true;
-        // if (selectedWizard == "Wizard1Button"){
-        //     if (Skillpoints.getPoints()>500){
-        //         unlockedSkillList[0]=true;
-        //     }
-        // }
+        if (Skillpoints.getPoints()>=300){
+            unlockedSkillList[0]=true;
+            if(Skillpoints.getPoints()>=700){
+                unlockedSkillList[1]=true;
+            }
+            else if(Skillpoints.getPoints()<500){
+                unlockedSkillList[1]=false;
+            }
+        }
+        else if (Skillpoints.getPoints()<100){
+            unlockedSkillList[0]=false;
+        }
         
     }
 
